@@ -5,6 +5,12 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
+/Assets/epyphany/
+/Assets/SampleScenes/
+/Assets/StarSparrow/
+/Assets/Standard Assets/
+/Assets/SkyBox Volume 2/
+
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
