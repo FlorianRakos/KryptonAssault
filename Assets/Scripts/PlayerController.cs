@@ -87,7 +87,7 @@ public class PlayerController : MonoBehaviour
 
      void OnPlayerDeath() //called by CollisionHandler
     {
-        print("message recieved");
+
         isControlEnabled = false;
     }
 

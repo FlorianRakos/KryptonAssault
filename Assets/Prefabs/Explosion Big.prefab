@@ -49,7 +49,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 0
   prewarm: 0
-  playOnAwake: 0
+  playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -866,7 +866,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 800
+      scalar: 8000
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -4710,8 +4710,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 1dcac56c4fc05544894b5e6f36ab8bb2, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 0.231
+  m_PlayOnAwake: 1
+  m_Volume: 0.656
   m_Pitch: 1
   Loop: 0
   Mute: 0
