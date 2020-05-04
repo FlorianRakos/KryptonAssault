@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] GameObject smokeFX;
     [SerializeField] Transform parent;
     [SerializeField] int scorePerHit = 10;
+    [SerializeField] int hits = 2;
 
     ScoreBoard scoreBoard;
     
@@ -23,24 +24,35 @@ public class Enemy : MonoBehaviour
 
     private void AddNonTriggerBoxCollider()
     {
-     Collider boxCollider = gameObject.AddComponent<BoxCollider>();
+     BoxCollider boxCollider = gameObject.AddComponent<BoxCollider>();
         boxCollider.isTrigger = false;
+        boxCollider.size = new Vector3(6, 2, 5);
+
     }
 
     
 
     private void OnParticleCollision(GameObject other)
     {
-        GameObject fxE =  Instantiate(explosionFX, transform.position, Quaternion.identity);
+        hits--;
+        print(hits);
+        //todo consider hit FX
+        if (hits <= 0)
+        {
+            KillEnemy();
+        }
+            
+
+    }
+
+    private void KillEnemy()
+    {
+        GameObject fxE = Instantiate(explosionFX, transform.position, Quaternion.identity);
         fxE.transform.parent = parent;
         GameObject fxS = Instantiate(smokeFX, transform.position, Quaternion.identity);
         fxS.transform.parent = parent;
-
         scoreBoard.ScoreHit(scorePerHit);
-
-        Destroy (gameObject);
-
-
+        Destroy(gameObject);
     }
 }
 

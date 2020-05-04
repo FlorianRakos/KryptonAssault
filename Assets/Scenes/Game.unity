@@ -293,6 +293,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &105499784 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6848645320716156400, guid: 27aad154f77a6a74da1cf7ee5f504dcf,
+    type: 3}
+  m_PrefabInstance: {fileID: 1590946576450653035}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &138265350 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1590946576605718924, guid: 27aad154f77a6a74da1cf7ee5f504dcf,
+    type: 3}
+  m_PrefabInstance: {fileID: 1590946576450653035}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &152229342 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4009920017056193131, guid: 1f3fea91ffd856340a274a95289090a7,
@@ -2509,6 +2521,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player Ship
+      objectReference: {fileID: 0}
+    - target: {fileID: 1590946576450653041, guid: 27aad154f77a6a74da1cf7ee5f504dcf,
+        type: 3}
+      propertyPath: guns.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1590946576450653041, guid: 27aad154f77a6a74da1cf7ee5f504dcf,
+        type: 3}
+      propertyPath: guns.Array.data[0]
+      value: 
+      objectReference: {fileID: 138265350}
+    - target: {fileID: 1590946576450653041, guid: 27aad154f77a6a74da1cf7ee5f504dcf,
+        type: 3}
+      propertyPath: guns.Array.data[1]
+      value: 
+      objectReference: {fileID: 105499784}
+    - target: {fileID: 1590946576605718924, guid: 27aad154f77a6a74da1cf7ee5f504dcf,
+        type: 3}
+      propertyPath: m_Name
+      value: Gun left
+      objectReference: {fileID: 0}
+    - target: {fileID: 6848645320716156400, guid: 27aad154f77a6a74da1cf7ee5f504dcf,
+        type: 3}
+      propertyPath: m_Name
+      value: Gun right
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27aad154f77a6a74da1cf7ee5f504dcf, type: 3}

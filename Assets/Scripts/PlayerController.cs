@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
@@ -22,7 +23,9 @@ public class PlayerController : MonoBehaviour
     [Header("Throw based")]
    [SerializeField] float pitchMovementSensitivity = 35f;
    [SerializeField] float rollSensitivity = 40f;
-   //[SerializeField] float smoothThrowFactor = 0.2f;
+    //[SerializeField] float smoothThrowFactor = 0.2f;
+
+    [SerializeField] GameObject[] guns;
 
 
 
@@ -41,6 +44,7 @@ public class PlayerController : MonoBehaviour
    {
       originalY = transform.localPosition.y;
 
+
    }
 
 
@@ -52,13 +56,16 @@ public class PlayerController : MonoBehaviour
         {
       ProcessMovement();
       ProcessRotation();
+      ProcessFiring();
         }
 
       
       
    }
 
-   void ProcessMovement()
+  
+
+    void ProcessMovement()
    {
       xThrow = CrossPlatformInputManager.GetAxis("Horizontal");
       float xOffset = xThrow * Time.deltaTime * xSpeed;
@@ -90,6 +97,36 @@ public class PlayerController : MonoBehaviour
 
         isControlEnabled = false;
     }
+
+    private void ProcessFiring()
+    {
+        if (CrossPlatformInputManager.GetButton("Fire")) 
+        {
+
+            ActivateGuns();
+
+        } else
+        {
+            DeactivateGuns();
+        }
+    }
+
+    private void ActivateGuns()
+    {
+        foreach (GameObject gun in guns)
+        {
+            gun.SetActive(true);
+        };
+    }
+
+    private void DeactivateGuns()
+    {
+        foreach(GameObject gun in guns)
+        {
+            gun.SetActive(false);
+        }
+    }
+
 
     /* void SmoothThrow()
      {
