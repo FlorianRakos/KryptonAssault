@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] GameObject smokeFX;
     [SerializeField] Transform parent;
     [SerializeField] int scorePerHit = 10;
-    [SerializeField] int hits = 2;
+    [SerializeField] int hits = 4;
 
     ScoreBoard scoreBoard;
     
@@ -34,8 +34,9 @@ public class Enemy : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
+        scoreBoard.ScoreHit(scorePerHit);
         hits--;
-        print(hits);
+        
         //todo consider hit FX
         if (hits <= 0)
         {
@@ -51,7 +52,7 @@ public class Enemy : MonoBehaviour
         fxE.transform.parent = parent;
         GameObject fxS = Instantiate(smokeFX, transform.position, Quaternion.identity);
         fxS.transform.parent = parent;
-        scoreBoard.ScoreHit(scorePerHit);
+        
         Destroy(gameObject);
     }
 }

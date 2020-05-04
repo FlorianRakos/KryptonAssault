@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour
         {
       ProcessMovement();
       ProcessRotation();
-      ProcessFiring();
+      ProcessHit();
         }
 
       
@@ -98,7 +98,7 @@ public class PlayerController : MonoBehaviour
         isControlEnabled = false;
     }
 
-    private void ProcessFiring()
+    private void ProcessHit()
     {
         if (CrossPlatformInputManager.GetButton("Fire")) 
         {
