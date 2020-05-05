@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] Transform parent;
     [SerializeField] int scorePerHit = 10;
     [SerializeField] int hits = 4;
+    //[SerializeField] enum TypeOfEnemy {hunter, bomber };
 
     ScoreBoard scoreBoard;
     
@@ -26,7 +27,8 @@ public class Enemy : MonoBehaviour
     {
      BoxCollider boxCollider = gameObject.AddComponent<BoxCollider>();
         boxCollider.isTrigger = false;
-        boxCollider.size = new Vector3(6, 2, 5);
+        
+        boxCollider.size = new Vector3(7, 3, 6);
 
     }
 

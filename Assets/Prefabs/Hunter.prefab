@@ -163,11 +163,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3919745183604147554}
-  - component: {fileID: 29400290}
-  - component: {fileID: 5958490390313472701}
   - component: {fileID: 6514703088008495411}
   m_Layer: 0
-  m_Name: Space Enemy 1
+  m_Name: Hunter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -182,7 +180,7 @@ Transform:
   m_GameObject: {fileID: 3922746413609310676}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 20, y: -3.0556, z: -75}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 3919281944455555228}
   - {fileID: 3925793172616643794}
@@ -199,32 +197,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &29400290
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3922746413609310676}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 1.78, y: 1.3921053, z: 10.1}
-  m_Center: {x: 0, y: 0.19605246, z: -0.27999994}
---- !u!65 &5958490390313472701
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3922746413609310676}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 6.1, y: 1.11, z: 2.46}
-  m_Center: {x: 0, y: -0.9, z: -0.31}
 --- !u!114 &6514703088008495411
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,6 +212,9 @@ MonoBehaviour:
   explosionFX: {fileID: 2179253575918514378, guid: 439403f9a1621eb45b5465474e5c609c,
     type: 3}
   smokeFX: {fileID: 8648767498677365008, guid: 5010783ecabcf2a49ae5fcbebe2ac9d4, type: 3}
+  parent: {fileID: 0}
+  scorePerHit: 10
+  hits: 4
 --- !u!1 &3923049860705726560
 GameObject:
   m_ObjectHideFlags: 0
