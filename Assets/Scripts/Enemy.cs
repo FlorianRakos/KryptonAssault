@@ -38,6 +38,7 @@ public class Enemy : MonoBehaviour
     {
         scoreBoard.ScoreHit(scorePerHit);
         hits--;
+        print(hits);
         
         //todo consider hit FX
         if (hits <= 0)

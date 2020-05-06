@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     //[SerializeField] float smoothThrowFactor = 0.2f;
 
     [SerializeField] GameObject[] guns;
+    [SerializeField] int fireRate = 8;
 
 
 
@@ -103,29 +104,29 @@ public class PlayerController : MonoBehaviour
         if (CrossPlatformInputManager.GetButton("Fire")) 
         {
 
-            ActivateGuns();
+            SetGunsActive(true);
 
         } else
         {
-            DeactivateGuns();
+            SetGunsActive(false);
         }
     }
 
-    private void ActivateGuns()
+    private void SetGunsActive(bool isActive)
     {
         foreach (GameObject gun in guns)
         {
-            gun.SetActive(true);
+            if (isActive)
+            {
+                gun.GetComponent<ParticleSystem>().emissionRate = fireRate;
+            }   else
+            {
+                gun.GetComponent<ParticleSystem>().emissionRate = 0;
+            }
         };
     }
 
-    private void DeactivateGuns()
-    {
-        foreach(GameObject gun in guns)
-        {
-            gun.SetActive(false);
-        }
-    }
+
 
 
     /* void SmoothThrow()
