@@ -27,7 +27,16 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] GameObject[] guns;
     [SerializeField] int fireRate = 8;
+    [SerializeField] float energyCharge = 100;
+    [SerializeField] float energyPerShot = 20;
+    [SerializeField] float energyRestored = 20;
+    bool coolOffMode = false;
 
+    AudioSource audioSource;
+    [SerializeField] AudioClip laserAudio;
+    AudioSource laserCannon;
+
+    public EnergyBar energyBar;
 
 
    float originalY;
@@ -44,7 +53,7 @@ public class PlayerController : MonoBehaviour
    void Start()
    {
       originalY = transform.localPosition.y;
-
+      
 
    }
 
@@ -57,11 +66,9 @@ public class PlayerController : MonoBehaviour
         {
       ProcessMovement();
       ProcessRotation();
-      ProcessHit();
+      ProcessFire();
         }
 
-      
-      
    }
 
   
@@ -99,29 +106,51 @@ public class PlayerController : MonoBehaviour
         isControlEnabled = false;
     }
 
-    private void ProcessHit()
+    private void ProcessFire()
     {
-        if (CrossPlatformInputManager.GetButton("Fire")) 
+        if (CrossPlatformInputManager.GetButton("Fire") && energyCharge >= 0 && coolOffMode == false) 
         {
-
+            energyCharge = energyCharge - (energyPerShot * Time.deltaTime);
             SetGunsActive(true);
+            
 
         } else
         {
+            if (energyCharge <= 0) {
+                coolOffMode = true;
+                energyBar.SetColorRed(true);
+            }
+
+            if (energyCharge < 100)
+            {
+                energyCharge = energyCharge + (energyRestored * Time.deltaTime);
+            }
+
+            if (energyCharge >= 20)
+            {
+                coolOffMode = false;
+                energyBar.SetColorRed(false);
+            }
+
             SetGunsActive(false);
         }
+        energyBar.SetEnergy(energyCharge);
     }
 
     private void SetGunsActive(bool isActive)
     {
         foreach (GameObject gun in guns)
         {
+            gameObject.GetComponent<AudioSource>();
             if (isActive)
             {
                 gun.GetComponent<ParticleSystem>().emissionRate = fireRate;
+                if (!gameObject.GetComponent<AudioSource>().isPlaying)
+                { gameObject.GetComponent<AudioSource>().Play(); }
             }   else
             {
                 gun.GetComponent<ParticleSystem>().emissionRate = 0;
+                gameObject.GetComponent<AudioSource>().Stop();
             }
         };
     }

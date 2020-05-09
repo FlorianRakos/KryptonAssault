@@ -1,18 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-
-public class SceneLoader : MonoBehaviour
+public class GameStarter : MonoBehaviour
 {
 
-    void Start()
-    {
-        Invoke("loadFirstScene", 30f);
-    }
-    void loadFirstScene()
+    public void startGame ()
     {
         SceneManager.LoadScene(1);
     }
 
+    
+
+        
 }
