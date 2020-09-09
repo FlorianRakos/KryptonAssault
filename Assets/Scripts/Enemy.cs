@@ -10,13 +10,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] Transform parent;
     [SerializeField] int scorePerHit = 10;
     [SerializeField] int hits = 4;
-    //[SerializeField] enum TypeOfEnemy {hunter, bomber };
 
     ScoreBoard scoreBoard;
     
-
-
-    // Start is called before the first frame update
     void Start()
     {
         AddNonTriggerBoxCollider();
@@ -29,24 +25,17 @@ public class Enemy : MonoBehaviour
         boxCollider.isTrigger = false;
         
         boxCollider.size = new Vector3(7, 3, 6);
-
-    }
-
-    
+    }    
 
     private void OnParticleCollision(GameObject other)
     {
         scoreBoard.ScoreHit(scorePerHit);
         hits--;
-        print(hits);
-        
-        //todo consider hit FX
+
         if (hits <= 0)
         {
             KillEnemy();
-        }
-            
-
+        }           
     }
 
     private void KillEnemy()
@@ -59,5 +48,3 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject);
     }
 }
-
-// O<>O //

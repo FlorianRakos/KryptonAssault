@@ -5,11 +5,8 @@ using UnityEngine.UI;
 
 public class ScoreBoard : MonoBehaviour
 {
-
-
     int score;
     Text scoreText;
-
     
     void Start()
     {
@@ -21,11 +18,5 @@ public class ScoreBoard : MonoBehaviour
     {
         score = score + scoreHit;
         scoreText.text = score.ToString();
-    }
-
-    
-    void Update()
-    {
-        
     }
 }

@@ -19,12 +19,11 @@ public class CollisionHandler : MonoBehaviour
         SendMessage("OnPlayerDeath");
         explosionFX.SetActive (true);
         smokeFX.SetActive(true);
-        Invoke("loadSplash", levelLoadDelay);
-        
+        Invoke("loadSplash", levelLoadDelay);        
     }
 
-    void loadSplash () // string referenced
+    void loadSplash ()
     {
-    SceneManager.LoadScene(1);
+        SceneManager.LoadScene(1);
     }
 }

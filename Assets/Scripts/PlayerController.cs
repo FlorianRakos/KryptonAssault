@@ -11,19 +11,18 @@ public class PlayerController : MonoBehaviour
 {
 
     [Header("General")]
-   [Tooltip("In ms^-1")] [SerializeField] float xSpeed = 50f;
-   [Tooltip("In ms^-1")] [SerializeField] float ySpeed = 50f;
-   [Tooltip("In m")] [SerializeField] float xRange = 14f;
-   [Tooltip("In m")] [SerializeField] float yRange = 11f;
+    [Tooltip("In ms^-1")] [SerializeField] float xSpeed = 50f;
+    [Tooltip("In ms^-1")] [SerializeField] float ySpeed = 50f;
+    [Tooltip("In m")] [SerializeField] float xRange = 14f;
+    [Tooltip("In m")] [SerializeField] float yRange = 11f;
 
     [Header("Position based")]
-   [SerializeField] float yawSensitivity = 1f;
-   [SerializeField] float pitchSensitivity = 1f;
+    [SerializeField] float yawSensitivity = 1f;
+    [SerializeField] float pitchSensitivity = 1f;
 
     [Header("Throw based")]
-   [SerializeField] float pitchMovementSensitivity = 35f;
-   [SerializeField] float rollSensitivity = 40f;
-    //[SerializeField] float smoothThrowFactor = 0.2f;
+    [SerializeField] float pitchMovementSensitivity = 35f;
+    [SerializeField] float rollSensitivity = 40f;
 
     [SerializeField] GameObject[] guns;
     [SerializeField] int fireRate = 8;
@@ -39,39 +38,26 @@ public class PlayerController : MonoBehaviour
     public EnergyBar energyBar;
 
 
-   float originalY;
-   float xThrow, yThrow;
-    //float xThrowLastFrame = 0;
-    //float yThrowLastFrame = 0;
-    //float xThrowSmooth;
-    //float yThrowSmooth;
-
+    float originalY;
+    float xThrow, yThrow;
     bool isControlEnabled = true;
    
 
 
    void Start()
    {
-      originalY = transform.localPosition.y;
-      
-
+      originalY = transform.localPosition.y;      
    }
-
 
    void Update()
    {
-      //SmoothThrow();
-
         if (isControlEnabled == true)
         {
       ProcessMovement();
       ProcessRotation();
       ProcessFire();
         }
-
    }
-
-  
 
     void ProcessMovement()
    {
@@ -100,9 +86,8 @@ public class PlayerController : MonoBehaviour
       transform.localRotation = Quaternion.Euler(pitch, yaw, roll);
    }
 
-     void OnPlayerDeath() //called by CollisionHandler
+     void OnPlayerDeath()
     {
-
         isControlEnabled = false;
     }
 
@@ -111,9 +96,7 @@ public class PlayerController : MonoBehaviour
         if (CrossPlatformInputManager.GetButton("Fire") && energyCharge >= 0 && coolOffMode == false) 
         {
             energyCharge = energyCharge - (energyPerShot * Time.deltaTime);
-            SetGunsActive(true);
-            
-
+            SetGunsActive(true);            
         } else
         {
             if (energyCharge <= 0) {
@@ -152,33 +135,6 @@ public class PlayerController : MonoBehaviour
                 gun.GetComponent<ParticleSystem>().emissionRate = 0;
                 gameObject.GetComponent<AudioSource>().Stop();
             }
-        };
+        }
     }
-
-
-
-
-    /* void SmoothThrow()
-     {
-
-
-  if (xThrow < xThrowLastFrame - smoothThrowFactor) {
-      xThrowSmooth = xThrowLastFrame - smoothThrowFactor;
-  } else if (xThrow > xThrowLastFrame + smoothThrowFactor) {
-      xThrowSmooth = xThrowLastFrame + smoothThrowFactor;
-  } else {
-      xThrowSmooth = xThrow;
-  }
-
-
-
-  xThrowLastFrame = xThrow;
-  yThrowLastFrame = yThrow;
-
-     }*/
-
-
-
-
-
 }
